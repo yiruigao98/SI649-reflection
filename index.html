@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="path/to/p5.sound.js"></script>
+    <script src="p5.play.js"></script>
+    <script src="grafica.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <script src = "https://github.com/bitcraftlab/p5.gui/tree/master/libraries/p5.gui.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <p class="title">Total reflection and Brewster's angle</p>
+    <div class="author">
+    Yirui Gao, <i>School of Information</i>
+    </div>
+    <div class="notation">
+    This is the work for individual project in SI649, <i> Information Visualization</i>
+    </div>
+    <div class="text">
+    Total reflection for electromagnetic waves including lights is a common phenomenon for the incidence wave from one medium going into another medium. When the refractive index of the incidence medium is larger than the refractive index of the transmitted medium, total reflection starts to occur as incidence angle growing to a specific value. Before talking about the details, let's review the relationship between incidence angle and refracted angle, which is the Snell's refraction law:
+      </div>
+      <br>
+      <center><img src="http://latex.codecogs.com/svg.latex?n_isin\theta_i = n_tsin\theta_t" border="0" height = "20px"/></center>
+    
+    <br> 
+    <div class="text">
+    The total reflection originates when the refraction angle forms a 90 degree and thus disappears in the refracted medium. In such cases, we can only observe the reflected wave in the incidence medium. And at all angles less than the critical angle, both refraction and reflection occur in varying proportions.
+    </div>
+    <br>
+    <div class="text">
+    There are two kinds of polarizations for em waves. The s-polarization denotes a perpendicular eletric filed of the wavefront, and p-polarization represents a  parallel electric field. According to <a href="https://www.brown.edu/research/labs/mittleman/sites/brown.edu.research.labs.mittleman/files/uploads/lecture13_0.pdf">Fresnel equations</a>, both the reflection coefficient and transmission coefficient of the two types of polarizations can be calculated respectively. In views of power and energy, we can also derive the power reflection coefficient for both:
+    </div>
+    <br>
+    <center><img src="http://latex.codecogs.com/svg.latex?R_s = |r_s|^2 = |\frac{n_icos\theta_i-n_tcos\theta_t}{n_icos\theta_i+n_tcos\theta_t}|^2" border="0" height = "40px"/></center>
+    <br>
+    <center><img src="http://latex.codecogs.com/svg.latex?R_p = |r_p|^2 = |\frac{n_icos\theta_t-n_tcos\theta_i}{n_icos\theta_t+n_tcos\theta_i}|^2" border="0" height = "40px"/></center>
+    <br>
+    <div class="text">
+    Similarly, the power transmission coefficient of the two types of polarizations can be calculated by subtraction:
+    </div>
+        <br>
+    <center><img src="http://latex.codecogs.com/svg.latex?T_s = 1 - R_s" border="0" height = "20px"/></center>
+    <br>
+    <center><img src="http://latex.codecogs.com/svg.latex?T_p = 1 - R_p" border="0" height = "20px"/></center>
+    <br>
+    <div class="text">
+    Another important concept to learn is the Brewster's angle. When the wave is p-polarization, we can observe that, also using the equations to verify, the power reflection coefficient will become 0 at a certain given incidence angle. We can next verify that at this time the reflected wave is exactly perpendicular to the refracted wave. The incidence angle at this moment is called Brewster's angle and the formula is derived by:
+    </div>
+    <br>
+    <center><img src="http://latex.codecogs.com/svg.latex?\theta_B = atan(\frac{n_t}{n_i})" border="0" height = "40px"/></center>
+    <br>
+    <div class="text">
+  The Brewster's angle has a lot of applications. Polarized sunglasses use it to reduce the glare from sun. Gas lasers usually use a window tilted at Brewster's angle to allow the beam to leave the laser tube. The details and more examples can be found by the 
+<a href="https://en.wikipedia.org/wiki/Brewster%27s_angle">Wiki resource</a>.
+    </div>
+    <br>
+    <div class="text">
+      A live demo for these concepts are visualized and shown if you click the follow trigger box.
+    </div>
+    <br>
+    <br>
+    <center>
+  <a class="button" href="visual.html">Open the demo</a>
+      </center>
+    <br>
+    <br>
+    
+    </body>
+</html>

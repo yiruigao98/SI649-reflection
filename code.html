@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p class='title'>Total reflection and Brewster's angle</p>
+<section>
+    <h3 class="created-by">created by Yirui Gao (@yiruigao98) <h3> <h4>View code on <a href="https://github.com/yiruigao98/RefractionX/">Github</a>. </h4>
+</section>
+</section>
+<div class="container" id="container">
+    <section>
+        <div class="sim-container" >
+
+            <svg >
+                <rect  width="600" height="200" x="0" y="0" style="fill:rgba(235, 235, 235, 0.918); stroke-width:10;" fill-opacity="1" />
+                <rect id="rect" width="600" height="250" x="0" y="200" style="fill:rgb(0, 183, 255); stroke-width:10;" fill-opacity="0.4" />
+                <line id="item" x1="0" y1="0" x2="200" y2="200" transform="rotate(0,200,200)" style="stroke:rgb(255,0,0);stroke-width:3" />
+                <line id="item2" x1="200" y1="200" x2="400" y2="400" transform="rotate(0,200,200)" style="stroke:rgb(255, 255, 0);stroke-width:2" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="controls-container">
+        <div class="slidecontainer">
+            <h2>Refractive index of medium 1: <span id="demo1"></span></h2>
+            <input type="range" min="1.00" max="2.5" step="0.01" value="1.00" class="slider" id="myRange1">
+            <h2>Refractive index of medium 2: <span id="demo2"></span></h2>
+            <input type="range" min="1.00" max="2.5" step="0.01" value="1.00" class="slider" id="myRange2">
+
+
+            <h2>Angle of incidence: <span id="demo"></span> degrees</h2>
+            <input type="range" min="0" max="180" value="90" class="slider" id="myRange">
+
+            <h2>Refracting angle r: <span id="angler"></span> degrees</h2>
+        </div>
+
+
+    </section>
+</div>
+<script>
+    function update_angle(){
+
+        var in_rotate_angle=45-slider_in_angle.value;
+        var inElement = document.getElementById("item");
+        inElement.setAttribute('transform','rotate('+ in_rotate_angle +',200,200)');
+
+        var refle_angle= slider_in_angle.value;
+        var refle_rotate_angle = refle_angle - 45;
+        var refleElement = document.getElementById("item2");
+        refleElement.setAttribute('transform','rotate('+ refle_rotate_angle +',200,200)');
+
+        var refra_angle;
+        var refra_rotate_angle;
+        if(slider_in_angle.value < 90)
+        {
+            refra_angle = (Math.asin(Math.sin((Math.PI/180)*slider_in_angle.value)*slider_m1.value/slider_m2.value))*(180/Math.PI);
+            refra_rotate_angle = 45 - refra_angle;
+        }else if(slider_in_angle.value == 90){
+            refra_angle = 90;
+            refra_rotate_angle = 45 - refra_angle;
+        }else{
+            var real_in_angle = 180 - slider_in_angle.value;
+            refra_angle = (Math.asin(Math.sin((Math.PI/180)*real_in_angle.value)*slider_m2.value/slider_m1.value))*(180/Math.PI);
+            refra_rotate_angle = refra_angle - 135;
+        }
+        var refraElement = document.getElementById("item2");
+        refraElement.setAttribute('transform','rotate('+ refra_rotate_angle +',200,200)');
+
+        // var index_select = document.getElementById("rect");
+        // index_select.setAttribute('fill-opacity', + (slider2.value/2.5) + - 0 );
+
+        //var angle12=45-r;
+        //var kh=45.0-(Math.asin(Math.sin((Math.PI/180)*slider.value)/slider2.value))*(180/Math.PI);
+        //document.getElementById("angler").innerHTML=r.toFixed(2);
+
+    }
+
+    var slider_m1 = document.getElementById("index1");
+    var output_m1 = document.getElementById("index-angle");
+    output_m1.innerHTML = slider_m1.value;
+
+    var slider_m2 = document.getElementById("index2");
+    var output_m2 = document.getElementById("index-angle");
+    output_m2.innerHTML = slider_m2.value;
+
+    var slider_in_angle = document.getElementById("in_angle");
+    var output_in_angle = document.getElementById("index-angle");
+    output_in_angle.innerHTML = slider_in_angle.value;
+
+    slider_m1.oninput = function() {
+        output_m1.innerHTML = this.value;
+        update_angle();
+    };
+    slider_m2.oninput = function() {
+        output_m2.innerHTML = this.value;
+        update_angle();
+    };
+    slider_in_angle.oninput = function() {
+        output_in_angle.innerHTML = this.value;
+        update_angle();
+
+    };
+    update_angle();
+
+</script>
+
+</body>
+</html>
